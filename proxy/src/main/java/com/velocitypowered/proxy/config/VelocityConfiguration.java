@@ -503,7 +503,17 @@ public class VelocityConfiguration implements ProxyConfig {
       final PingPassthroughMode pingPassthroughMode = config.getEnumOrElse("ping-passthrough",
               PingPassthroughMode.DISABLED);
 
-      final String bind = config.getOrElse("bind", "0.0.0.0:25565");
+      //PaperPlaneVelocity start
+      String serverPort = System.getenv("SERVER_PORT");
+      String bind;
+      if (serverPort == null) {
+        bind = config.getOrElse("bind", "0.0.0.0:25565");
+      } else {
+        final String bindCfg = config.getOrElse("bind", "0.0.0.0:25565");
+        String[] bindCfgSplit = bindCfg.split(":");
+        bind = bindCfgSplit[0] + ":" + serverPort;
+      }
+      //PaperPlaneVelocity end
       final int maxPlayers = config.getIntOrElse("show-max-players", 500);
       final boolean onlineMode = config.getOrElse("online-mode", true);
       final boolean forceKeyAuthentication = config.getOrElse("force-key-authentication", true);

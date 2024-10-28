@@ -18,7 +18,9 @@ tasks {
 
     jar {
         manifest {
-            attributes["Implementation-Title"] = "Velocity"
+            //PaperPlaneVelocity start
+            attributes["Implementation-Title"] = "PaperPlaneVelocity"
+            //PaperPlaneVelocity end
             attributes["Implementation-Vendor"] = "Velocity Contributors"
             attributes["Multi-Release"] = "true"
         }
