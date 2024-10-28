@@ -511,6 +511,9 @@ public class VelocityConfiguration implements ProxyConfig {
       } else {
         final String bindCfg = config.getOrElse("bind", "0.0.0.0:25565");
         String[] bindCfgSplit = bindCfg.split(":");
+        if (bindCfgSplit.length != 2) {
+          throw new RuntimeException("Invalid bind configuration: " + bindCfg);
+        }
         bind = bindCfgSplit[0] + ":" + serverPort;
       }
       //PaperPlaneVelocity end
