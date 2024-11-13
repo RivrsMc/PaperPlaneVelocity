@@ -517,6 +517,7 @@ public class VelocityConfiguration implements ProxyConfig {
         bind = bindCfgSplit[0] + ":" + serverPort;
       }
       //PaperPlaneVelocity end
+
       final int maxPlayers = config.getIntOrElse("show-max-players", 500);
       final boolean onlineMode = config.getOrElse("online-mode", true);
       final boolean forceKeyAuthentication = config.getOrElse("force-key-authentication", true);
